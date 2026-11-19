@@ -1,0 +1,43 @@
+# train.yaml = training configuration; experimental settings
+
+# Model
+model:
+  name: "rfdetr_small"
+  num_classes: 1
+  resolution: 512
+
+# Dataset
+# Dataset
+data:
+  dataset_dir: "data/xview"
+  dataset_file: "coco"
+  train_images: "train"
+  val_images: "val"
+  train_annotations: "annotations/instances_train.json"
+  val_annotations: "annotations/instances_val.json"
+
+# Training
+train:
+  epochs: 50
+  batch_size: 4
+  grad_accum_steps: 1
+  lr: 0.0001
+  lr_encoder: 0.00015
+  weight_decay: 0.0001
+  seed: 42
+
+# Validation
+validation:
+  eval_interval: 1
+  best_model_metric: "map"
+
+# Checkpoints and outputs
+output:
+  output_dir: "outputs/rfdetr_small"
+  checkpoint_interval: 5
+
+# Hardware
+hardware:
+  accelerator: "auto"
+  devices: 1
+  num_workers: 4

@@ -1,0 +1,49 @@
+
+DATASET REQUIREMENTS 
+The training pipeline uses COCO object detection format thus the dataset should follow the following structure
+
+xview/
+├── train/
+│   ├── image_001.jpg
+│   ├── image_002.jpg
+│   └── ...
+│
+├── val/
+│   ├── image_101.jpg
+│   ├── image_102.jpg
+│   └── ...
+│
+└── annotations/
+    ├── instances_train.json
+    └── instances_val.json
+
+NOTE:
+- Every image must have a corresponding entry in its COCO annotation file.
+- Image filenames in the JSON annotations must match the actual image filenames.
+- Bounding boxes must follow COCO format: [x, y, width, height] and expressed as pixels.
+- Image IDs referenced by annotations must exist in the corresponding images list.
+- Category IDs must be consistent across training and validation.
+- The detection task currently uses one class: tent.
+
+COCO category example:
+
+"categories": [
+    {
+        "id": 1,
+        "name": "tent",
+        "supercategory": "object"
+    }
+]
+
+The final category ID must be compatible with the RF-DETR label indexing. 
+The pipeline currently expects one detection class.
+
+
+
+RUNNING TRAINING ON KAGGLE 
+
+should work with: !uv run python scripts/finetune.py
+
+The script loads the YAML configuration, prepares the COCO directory layout, initialises RF-DETR and starts the Lightning training process.
+
+Training outputs and checkpoints are written to the configured output directory.

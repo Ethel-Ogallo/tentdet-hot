@@ -1,0 +1,20 @@
+[project]
+name = "tentdet-hot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Ethel-Ogallo", email = "ogalloethel@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0.3",
+    "rfdetr[train]>=1.12.1",
+]
+
+[project.scripts]
+tentdet-hot = "tentdet_hot:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
