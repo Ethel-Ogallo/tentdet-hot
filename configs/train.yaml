@@ -41,3 +41,11 @@ hardware:
   accelerator: "auto"
   devices: 1
   num_workers: 4
+
+# Experiment tracking
+logging:
+  wandb: true
+  mlflow: false
+  tensorboard: false
+  project: "tent-detection"
+  run: "rfdetr-small-test"

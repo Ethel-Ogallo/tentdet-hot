@@ -39,6 +39,12 @@ def build_train_config(config: dict) -> TrainConfig:
         accelerator=hardware["accelerator"],
         devices=hardware["devices"],
         num_workers=hardware["num_workers"],
+        logging = config["logging"]
+        wandb=logging["wandb"],
+        mlflow=logging["mlflow"],
+        tensorboard=logging["tensorboard"],
+        project=logging["project"],
+        run=logging["run"],
     )
 
 # prepare COCO dataset layout for RF-DETR
